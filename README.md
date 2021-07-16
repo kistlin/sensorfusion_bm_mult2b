@@ -181,14 +181,20 @@ Debugger: /Applications/MCUXpressoIDE_11.3.0_5222/ide/plugins/com.nxp.mcuxpresso
 Name: Debug ARM GCC
 Build type: Debug
 Toolchain: GNU ARM GCC - Official
-CMake options: -DCMAKE_TOOLCHAIN_FILE=GNUARMGCCToolchain.cmake
+CMake options:
+-DCMAKE_TOOLCHAIN_FILE=GCCToolchain.cmake
+-DCROSS_COMPILER_TOOLCHAIN_DIR=C:/tools/nxp/MCUXpressoIDE_11.3.1_5262/ide/tools/bin
+-DCMAKE_MAKE_PROGRAM=C:/tools/nxp/MCUXpressoIDE_11.3.1_5262/ide/buildtools/bin/make.exe
 Build options: -- -j 8
 ```
 ```
 Name: Debug MCUXpresso
 Build type: Debug
 Toolchain: GNU ARM GCC - MCUXpresso
-CMake options: -DCMAKE_TOOLCHAIN_FILE=MCUXpressoGCCToolchain.cmake
+CMake options:
+-DCMAKE_TOOLCHAIN_FILE=GCCToolchain.cmake
+-DCROSS_COMPILER_TOOLCHAIN_DIR=C:/tools/gcc-arm-none-eabi-10-2020-q4-major/bin
+-DCMAKE_MAKE_PROGRAM=C:/tools/nxp/MCUXpressoIDE_11.3.1_5262/ide/buildtools/bin/make.exe
 Build options: -- -j 8
 ```
 
