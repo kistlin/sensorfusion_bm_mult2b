@@ -266,16 +266,61 @@ GDB Server: /Applications/SEGGER/JLink_V646k/JLinkGDBServer
 #### MK64FN1M0xxx12
 ##### JTAG
 ```
+GDB Server args: -device MK64FN1M0xxx12 -endian little -if jtag -speed auto -port 2331 -swoport 2332 -telnetport 2333
 ```
 
 #### SWD (OpenSDA)
 ```
-GDB Server args: -if swd -port 2331 -swoport 2332 -telnetport 2333 -device MK64FN1M0xxx12
+GDB Server args: -device MK64FN1M0xxx12 -endian little -if swd -speed auto -port 2331 -swoport 2332 -telnetport 2333
 ```
 
 ### SEGGER J-Link EDU debug probe
 
 ![SEGGER J-Link EDU](doc/images/J-Link_EDU_Target.png)
+
+#### Command line options
+
+>Note: Using GDB Server CL, device, interface, endian and speed are mandatory options to correctly connect to the target, and should be given before connection via GDB.
+
+[Command line options](https://wiki.segger.com/J-Link_GDB_Server#Command_line_options)
+
+| Command line option | Explanation                                     |
+|:--------------------|:------------------------------------------------|
+| -device             | Selects the connected target device.            |
+| -endian             | Selects the device endianness.                  |
+| -if                 | Selects the interface to connect to the target. |
+| -speed              | Selects the target communication speed.         |
+
+| Command line option | Explanation                                               |
+|:--------------------|:----------------------------------------------------------|
+| -port               | Select the port to listen for GDB clients.                |
+| -swoport            | Select the port to listen for clients for SWO RAW output. |
+| -telnetport         | Select the port to listen for clients for printf output.  |
+
+|Command line option |Explanation                                                     |
+|:-------------------|:---------------------------------------------------------------|
+| -ir                | Initialize the CPU registers on start of GDB Server. (Default) |
+| -noir              | Do not initialize CPU registers on start of GDB Server.        |
+| -localhostonly     | Allow only localhost connections (Windows default)             |
+| -nolocalhostonly   | Allow connections from outside localhost (Linux default)       |
+| -logtofile         | Generate a GDB Server log file.                                |
+| -nologtofile       | Do not generate a GDB Server log file. (Default)               |
+| -halt              | Halt the target on start of GDB Server. (Default)              |
+| -nohalt            | Do not halt the target on start of GDB Server.                 |
+| -silent            | Do not show log output.                                        |
+| -nosilent          | Show log output. (Default)                                     |
+| -stayontop         | Set the GDB Server GUI to be the topmost window.               |
+| -nostayontop       | Do not be the topmost window. (Default)                        |
+| -timeout           | Set the time after which the target has to be connected.       |
+| -notimeout         | Set infinite timeout for target connection.                    |
+| -vd                | Verify after downloading.                                      |
+| -novd              | Do not verify after downloading. (Default)                     |
+
+Currently, the following values are accepted for <Interface>:
+- JTAG
+- SWD
+- FINE
+- 2-wire-JTAG-PIC32
 
 #### OpenSDA firmware from Segger to debug over USB
 
